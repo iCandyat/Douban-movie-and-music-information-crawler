@@ -21,7 +21,7 @@ music_style = []
 
 # 爬取每一页的数据
 for i in range(10):
-    url = f'https://music.douban.com/top250?start={i*25}'
+    url = 'https://music.douban.com/top250'
     res = requests.get(url, headers=headers)
     soup = BeautifulSoup(res.text, 'html.parser')
     musics = soup.select('.item')
@@ -41,7 +41,6 @@ for i in range(10):
         music_type.append(infos[2])
         music_media.append(infos[3])
         music_style.append(infos[4])
-        sleep(1)
 df = pd.DataFrame({
     '专辑名称': music_name,
     '专辑链接': music_url,
